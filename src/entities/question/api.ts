@@ -2,16 +2,21 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { baseAxios, ErrorResponseType, sleep } from "@shared";
 
 export interface IQuestion {
-  type: string;
-  difficulty: string;
+  type: "multiple" | "boolean";
+  difficulty: "easy" | "medium" | "hard";
   category: string;
   question: string;
-  correct_answer: string;
+  correct_answer: string[];
   incorrect_answers: string[];
 }
 
 export interface IQuestionWithId extends IQuestion {
   id: string;
+}
+
+export interface IStoredQuestionWithId extends IQuestionWithId {
+  selectedAnswers: string[];
+  isAnswered: boolean;
 }
 
 export interface IResponse {
