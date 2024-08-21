@@ -1,4 +1,4 @@
-import { questionsSlice } from "@entities/question/model";
+import { questionsSlice } from "@entities/question";
 import { combineReducers, configureStore } from "@reduxjs/toolkit/react";
 
 const rootReducer = combineReducers({
