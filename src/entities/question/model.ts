@@ -29,6 +29,10 @@ export const questionsSlice = createSlice({
       state.answeredQuestions = [];
       state.questions = [];
     },
+    resetError(state) {
+      state.isError = false;
+      state.error = null;
+    },
   },
   extraReducers(builder) {
     builder.addCase(getQuestions.pending, (state) => {
