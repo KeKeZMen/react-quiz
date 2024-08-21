@@ -1,9 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getQuestions, IQuestionWithId, IStoredQuestionWithId } from "./api";
+import { ErrorResponseType } from "@shared";
 
 type InitialStateType = {
   isLoading: boolean;
   isError: boolean;
+  error: ErrorResponseType | null;
   questions: IQuestionWithId[];
   answeredQuestions: IStoredQuestionWithId[];
 };
@@ -11,6 +13,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   isLoading: false,
   isError: false,
+  error: null,
   questions: [],
   answeredQuestions: [],
 };
@@ -37,9 +40,10 @@ export const questionsSlice = createSlice({
       state.isLoading = false;
       state.questions = action.payload;
     });
-    builder.addCase(getQuestions.rejected, (state) => {
+    builder.addCase(getQuestions.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
+      state.error = action.payload as ErrorResponseType;
       state.questions = [];
     });
   },
