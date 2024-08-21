@@ -6,12 +6,13 @@ import {
   Checkbox,
   RadioGroup,
   RadioGroupItem,
+  shufleQuestionsArray,
   useAppDispatch,
   useAppSelector,
   useToast,
 } from "@shared";
 import clsx from "clsx";
-import { FC, useState } from "react";
+import { FC, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type PropsType = {
@@ -24,7 +25,14 @@ export const Question: FC<PropsType> = ({ question }) => {
   const { toast } = useToast();
   const { questions } = useAppSelector((state) => state.questions);
 
-  const answers = [...question.incorrect_answers, ...question.correct_answer];
+  const answers = useMemo(
+    () =>
+      shufleQuestionsArray([
+        ...question.incorrect_answers,
+        ...question.correct_answer,
+      ]),
+    [question]
+  );
 
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
 

@@ -2,12 +2,14 @@ export const sleep = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
 export const shufleQuestionsArray = (array: Array<string>) => {
-  for (let i = array.length - 1; i > 0; i--) {
+  const result = array.slice();
+
+  for (let i = result.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[j], array[j]] = [array[j], array[i]];
+    [result[i], result[j]] = [result[j], result[i]];
   }
 
-  return array;
+  return result;
 };
 
 export const decodeHtml = (html: string) => {
