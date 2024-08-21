@@ -10,26 +10,32 @@ export const AnsweredQuestion: FC<PropsType> = ({ question }) => {
   return (
     <div
       className={clsx(
-        "flex justify-center items-center h-[300px] rounded-md shadow-md w-full p-3",
-        question.isAnswered ? "bg-green-400" : "bg-red-400"
+        "flex justify-center h-[500px] rounded-md shadow-md w-[300px]",
+        question.isAnswered ? "bg-green-600" : "bg-red-600"
       )}
     >
-      <div className="flex flex-col text-white ">
-        <h2 className="text-center">
-          Question: <br /> {question.question}
+      <div className="text-white grid grid-rows-3">
+        <h2 className="text-center border-b border-white p-3">
+          {question.question}
         </h2>
-        <p className="text-center">
-          Your answers: <br />
-          {question.selectedAnswers.map((answer) => answer).join(", ")}
-        </p>
-        <p className="text-center">
-          Correct answers: <br />
-          {question.correct_answer.map((answer) => answer).join(", ")}
-        </p>
-        <p className="text-center">
-          Question difficulty: <br />
-          {question.difficulty}
-        </p>
+
+        <div className="flex flex-col items-center border-b border-white py-3">
+          <p className="mb-1">Your answers: </p>
+          <div className="flex flex-col items-center">
+            {question.selectedAnswers.map((answer, i) => (
+              <p key={i}>{answer}</p>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center py-3">
+          <p className="mb-1">Correct answers: </p>
+          <div className="flex flex-col items-center">
+            {question.correct_answer.map((answer, i) => (
+              <p key={i}>{answer}</p>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
