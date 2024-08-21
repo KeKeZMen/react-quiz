@@ -14,8 +14,6 @@ export const baseAxios = axios.create({
 baseAxios.interceptors.response.use(
   (config) => config,
   (error) => {
-    console.log(error);
-
     throw error.response?.data as ErrorResponseType;
   }
 );
