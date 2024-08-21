@@ -46,41 +46,48 @@ export const Mainpage = () => {
   }, [questions]);
 
   return (
-    <div>
-      <h1>Mainpage</h1>
+    <main className="flex justify-center items-center h-[100dvh]">
+      <div className="flex flex-col bg-slate-500 rounded-md shadow-md w-[300px] p-3 gap-3">
+        <h1 className="text-center uppercase py-3 text-3xl text-white">
+          React Quiz
+        </h1>
 
-      <input
+        <label>
+          <span className="text-white">Easy questions count</span>
+          <Input
         type="number"
         value={easyQuestionsCount}
         onChange={handleEasyQuestionCount}
-        placeholder="easy"
+            className="outline-none border-none"
       />
+        </label>
 
-      <input
+        <label>
+          <span className="text-white">Medium questions count</span>
+          <Input
         type="number"
         value={mediumQuestionsCount}
         onChange={handleMediumQuestionCount}
-        placeholder="medium"
       />
+        </label>
 
-      <input
+        <label>
+          <span className="text-white">Hard questions count</span>
+          <Input
         type="number"
         value={hardQuestionsCount}
         onChange={handleHardQuestionCount}
-        placeholder="hard"
-      />
+          />
+        </label>
 
-      <button onClick={handleGetQuestions}>Get questions</button>
-
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        questions?.map((question) => (
-          <div key={question.id}>{question.difficulty}</div>
-        ))
-      )}
+        <Button
+          onClick={handleGetQuestions}
+          disabled={isLoading}
+          variant="outline"
+        >
+          {isError ? "Error..." : isLoading ? "Loading..." : "Get questions"}
+        </Button>
     </div>
+    </main>
   );
 };
