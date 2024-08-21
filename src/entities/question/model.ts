@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getQuestions, IQuestionWithId } from "./api";
+import { getQuestions, IQuestionWithId, IStoredQuestionWithId } from "./api";
 
 type InitialStateType = {
   isLoading: boolean;
   isError: boolean;
   questions: IQuestionWithId[];
-  answeredQuestions: IQuestionWithId[];
+  answeredQuestions: IStoredQuestionWithId[];
 };
 
 const initialState: InitialStateType = {
@@ -19,9 +19,12 @@ export const questionsSlice = createSlice({
   name: "questions",
   initialState,
   reducers: {
-    answerQuestion(state, action: PayloadAction<IQuestionWithId>) {
+    answerQuestion(state, action: PayloadAction<IStoredQuestionWithId>) {
       state.answeredQuestions.push(action.payload);
-      state.questions = state.questions.filter(question => question.id !== action.payload.id);
+    },
+    resetQuestions(state) {
+      state.answeredQuestions = [];
+      state.questions = [];
     },
   },
   extraReducers(builder) {
@@ -41,3 +44,5 @@ export const questionsSlice = createSlice({
     });
   },
 });
+
+export const { answerQuestion, resetQuestions } = questionsSlice.actions;
