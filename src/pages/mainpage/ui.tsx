@@ -8,18 +8,21 @@ export const Mainpage = () => {
     (state) => state.questions
   );
 
-  const [easyQuestionsCount, setEasyQuestionsCount] = useState(0);
+  const [easyQuestionsCount, setEasyQuestionsCount] = useState(1);
   const handleEasyQuestionCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value < 1 || +e.target.value > 4) return;
     setEasyQuestionsCount(+e.target.value);
   };
 
-  const [mediumQuestionsCount, setMediumQuestionsCount] = useState(0);
+  const [mediumQuestionsCount, setMediumQuestionsCount] = useState(1);
   const handleMediumQuestionCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value < 1 || +e.target.value > 4) return;
     setMediumQuestionsCount(+e.target.value);
   };
 
-  const [hardQuestionsCount, setHardQuestionsCount] = useState(0);
+  const [hardQuestionsCount, setHardQuestionsCount] = useState(1);
   const handleHardQuestionCount = (e: ChangeEvent<HTMLInputElement>) => {
+    if (+e.target.value < 1 || +e.target.value > 4) return;
     setHardQuestionsCount(+e.target.value);
   };
 
