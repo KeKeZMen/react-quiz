@@ -1,13 +1,20 @@
-import { getQuestions } from "@entities/question";
-import { Button, Input, useAppDispatch, useAppSelector } from "@shared";
+import { getQuestions, resetError } from "@entities/question";
+import {
+  Button,
+  Input,
+  useAppDispatch,
+  useAppSelector,
+  useToast,
+} from "@shared";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Mainpage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { toast, dismiss } = useToast();
 
-  const { isLoading, questions, isError } = useAppSelector(
+  const { isLoading, questions, isError, error } = useAppSelector(
     (state) => state.questions
   );
 
@@ -43,7 +50,30 @@ export const Mainpage = () => {
     if (questions.length > 0) {
       navigate(`/${questions[0].id}`);
     }
-  }, [questions]);
+
+    if (isError) {
+      switch (error?.status) {
+        case 429:
+          toast({
+            title: "To many requests, try later",
+            variant: "destructive",
+          });
+          break;
+
+        default:
+          toast({
+            title: "Error",
+            variant: "destructive",
+          });
+          break;
+      }
+
+      setTimeout(() => {
+        dismiss();
+        dispatch(resetError());
+      }, 10000);
+    }
+  }, [questions, isError]);
 
   return (
     <main className="flex justify-center items-center h-[100dvh]">
@@ -85,7 +115,7 @@ export const Mainpage = () => {
           disabled={isLoading}
           variant="outline"
         >
-          {isError ? "Error..." : isLoading ? "Loading..." : "Get questions"}
+          {isLoading ? "Loading..." : "Get questions"}
         </Button>
       </div>
     </main>
