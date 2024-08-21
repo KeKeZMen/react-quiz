@@ -55,28 +55,28 @@ export const Mainpage = () => {
         <label>
           <span className="text-white">Easy questions count</span>
           <Input
-        type="number"
-        value={easyQuestionsCount}
-        onChange={handleEasyQuestionCount}
+            type="number"
+            value={easyQuestionsCount}
+            onChange={handleEasyQuestionCount}
             className="outline-none border-none"
-      />
+          />
         </label>
 
         <label>
           <span className="text-white">Medium questions count</span>
           <Input
-        type="number"
-        value={mediumQuestionsCount}
-        onChange={handleMediumQuestionCount}
-      />
+            type="number"
+            value={mediumQuestionsCount}
+            onChange={handleMediumQuestionCount}
+          />
         </label>
 
         <label>
           <span className="text-white">Hard questions count</span>
           <Input
-        type="number"
-        value={hardQuestionsCount}
-        onChange={handleHardQuestionCount}
+            type="number"
+            value={hardQuestionsCount}
+            onChange={handleHardQuestionCount}
           />
         </label>
 
@@ -87,7 +87,7 @@ export const Mainpage = () => {
         >
           {isError ? "Error..." : isLoading ? "Loading..." : "Get questions"}
         </Button>
-    </div>
+      </div>
     </main>
   );
 };
