@@ -53,4 +53,5 @@ export const questionsSlice = createSlice({
   },
 });
 
-export const { answerQuestion, resetQuestions } = questionsSlice.actions;
+export const { answerQuestion, resetQuestions, resetError } =
+  questionsSlice.actions;
