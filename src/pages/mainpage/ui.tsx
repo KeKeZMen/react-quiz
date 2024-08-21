@@ -1,9 +1,12 @@
 import { getQuestions } from "@entities/question";
-import { useAppDispatch, useAppSelector } from "@shared";
-import { ChangeEvent, useState } from "react";
+import { Button, Input, useAppDispatch, useAppSelector } from "@shared";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Mainpage = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const { isLoading, questions, isError } = useAppSelector(
     (state) => state.questions
   );
@@ -35,6 +38,12 @@ export const Mainpage = () => {
       })
     );
   };
+
+  useEffect(() => {
+    if (questions.length > 0) {
+      navigate(`/${questions[0].id}`);
+    }
+  }, [questions]);
 
   return (
     <div>
