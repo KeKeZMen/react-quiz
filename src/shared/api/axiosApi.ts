@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export type ErrorResponseType = {
-  error: string;
+  data: any;
   status: number;
 };
 
@@ -14,6 +14,6 @@ export const baseAxios = axios.create({
 baseAxios.interceptors.response.use(
   (config) => config,
   (error) => {
-    throw error.response?.data as ErrorResponseType;
+    throw error.response as ErrorResponseType;
   }
 );
