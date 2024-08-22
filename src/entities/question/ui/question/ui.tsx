@@ -45,11 +45,12 @@ export const Question: FC<PropsType> = ({ question }) => {
   const handleAnswer = () => {
     if (selectedAnswers.length < 1) {
       toast({
-        title: "Выберите хотя бы 1 ответ",
+        title: "Select at least 1 option",
         variant: "destructive",
       });
       return;
     }
+
     const isAnswered =
       question.correct_answer.slice().sort().join(",") ==
       selectedAnswers.slice().sort().join(",");
