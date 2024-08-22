@@ -1,0 +1,87 @@
+{
+  "questions": {
+    "response_code": 0,
+    "results": [
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "Entertainment: Video Games",
+        "question": "In the Monster Hunter Series, it is possible to capture Elder Dragons.",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "General Knowledge",
+        "question": "Ping-Pong originated in England",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "hard",
+        "category": "Entertainment: Japanese Anime &amp; Manga",
+        "question": "The protagonist in &quot;Humanity Has Declined&quot; has no discernable name and is simply referred to as &#039;I&#039; for most of the series.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "medium",
+        "category": "Entertainment: Video Games",
+        "question": "The first Maxis game to feature the fictional language &quot;Simlish&quot; was The Sims (2000).",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "Science: Computers",
+        "question": "In most programming languages, the operator ++ is equivalent to the statement &quot;+= 1&quot;.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "Entertainment: Video Games",
+        "question": "The end credits sequence in Grand Theft Auto 5 is over half an hour long.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "medium",
+        "category": "Entertainment: Video Games",
+        "question": "The Fiat Multipla is a drivable car in &quot;Forza Horizon 3&quot;.",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "medium",
+        "category": "History",
+        "question": "Theodore Roosevelt Jr. was the only General involved in the initial assault on D-Day.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "Politics",
+        "question": "The 2016 United States Presidential Election is the first time Hillary Clinton has run for President.",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "type": "boolean",
+        "difficulty": "easy",
+        "category": "History",
+        "question": "In World War ll, Great Britian used inflatable tanks on the ports of Great Britain to divert Hitler away from Normandy/D-day landing.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      }
+    ]
+  }
+}
