@@ -84,7 +84,6 @@ export const Question: FC<PropsType> = ({ question }) => {
 
       {question.type === "boolean" ? (
         <RadioGroup
-          onValueChange={selectBooleanAnswer}
           className="flex justify-around md:justify-center items-center w-full"
         >
           {answers.map((answer, i) => (
@@ -97,7 +96,11 @@ export const Question: FC<PropsType> = ({ question }) => {
                   : "bg-slate-600"
               )}
             >
-              <RadioGroupItem value={answer} className="hidden" />
+              <RadioGroupItem
+                value={answer}
+                className="hidden"
+                onClick={() => selectBooleanAnswer(answer)}
+              />
               <p>{answer}</p>
             </label>
           ))}
