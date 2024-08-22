@@ -67,12 +67,14 @@ export const Question: FC<PropsType> = ({ question }) => {
       (questionFromStore) => questionFromStore.id === question.id
     );
 
-    setSelectedAnswers([]);
-
     if (questions.length == currentQuestionIndex + 1) return navigate("/final");
 
     navigate(`/${questions[currentQuestionIndex + 1].id}`);
   };
+
+  useEffect(() => {
+    setSelectedAnswers([]);
+  }, [question.question]);
 
   return (
     <div className="flex flex-col justify-between gap-3 items-center">
