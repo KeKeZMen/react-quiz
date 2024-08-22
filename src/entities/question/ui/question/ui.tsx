@@ -119,7 +119,6 @@ export const Question: FC<PropsType> = ({ question }) => {
             >
               <Checkbox
                 checked={selectedAnswers.includes(answer)}
-                defaultChecked={false}
                 onCheckedChange={(isChecked) =>
                   selectMultipleAnswer(answer, isChecked)
                 }
