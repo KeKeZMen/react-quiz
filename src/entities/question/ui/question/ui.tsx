@@ -78,7 +78,10 @@ export const Question: FC<PropsType> = ({ question }) => {
 
   return (
     <div className="flex flex-col justify-between gap-3 items-center">
-      <p className="p-3 rounded-md text-white text-3xl text-center">
+      <p
+        className="p-3 rounded-md text-white text-3xl text-center"
+        data-testid="question"
+      >
         {question.question}
       </p>
 
@@ -86,7 +89,8 @@ export const Question: FC<PropsType> = ({ question }) => {
         <RadioGroup className="grid grid-cols-2 justify-around md:justify-center items-center w-full">
           {answers.map((answer, i) => (
             <label
-              key={i}
+              data-testid="boolean-answer"
+              key={`${answer}-${i}`}
               className={clsx(
                 "text-white shadow-lg p-2 rounded-md w-full cursor-pointer text-center text-xl",
                 selectedAnswers.includes(answer)
@@ -107,6 +111,7 @@ export const Question: FC<PropsType> = ({ question }) => {
         <div className="flex flex-col gap-3 md:grid md:grid-cols-2 w-full">
           {answers.map((answer, i) => (
             <label
+              data-testid="multiple-answer"
               key={`${answer}-${i}`}
               className={clsx(
                 "text-white shadow-lg p-2 rounded-md cursor-pointer text-center text-2xl hover:bg-slate-500 transition-all",
@@ -128,7 +133,13 @@ export const Question: FC<PropsType> = ({ question }) => {
         </div>
       )}
 
-      <Button onClick={handleAnswer} className="w-full bg-slate-500 hover:bg-slate-400 text-2xl py-[30px] rounded-none absolute bottom-0 md:static md:rounded-md md:w-[200px]">Answer</Button>
+      <Button
+        onClick={handleAnswer}
+        data-testid="answer-button"
+        className="w-full bg-slate-500 hover:bg-slate-400 text-2xl py-[30px] rounded-none absolute bottom-0 md:static md:rounded-md md:w-[200px]"
+      >
+        Answer
+      </Button>
     </div>
   );
 };
