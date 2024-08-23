@@ -5,18 +5,16 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@app/store";
 
 export const useGetAnswers = (question: IQuestionWithId) => {
-  if (question.type === "boolean") {
-    return [...question.correct_answer, ...question.incorrect_answers].sort();
-  } else {
-    return useMemo(
-      () =>
-        shufleQuestionsArray([
-          ...question.incorrect_answers,
-          ...question.correct_answer,
-        ]),
-      [question]
-    );
-  }
+  return useMemo(
+    () =>
+      question.type === "boolean"
+        ? [...question.correct_answer, ...question.incorrect_answers].sort()
+        : shufleQuestionsArray([
+            ...question.incorrect_answers,
+            ...question.correct_answer,
+          ]),
+    [question.question]
+  );
 };
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
