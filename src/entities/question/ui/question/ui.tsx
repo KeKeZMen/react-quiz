@@ -23,10 +23,10 @@ export const Question: FC<PropsType> = ({ question }) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { toast } = useToast();
-  
+
   const { questions } = useAppSelector((state) => state.questions);
 
-  const answers = useGetAnswers(question)
+  const answers = useGetAnswers(question);
 
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
 
@@ -83,9 +83,7 @@ export const Question: FC<PropsType> = ({ question }) => {
       </p>
 
       {question.type === "boolean" ? (
-        <RadioGroup
-          className="grid grid-cols-2 justify-around md:justify-center items-center w-full"
-        >
+        <RadioGroup className="grid grid-cols-2 justify-around md:justify-center items-center w-full">
           {answers.map((answer, i) => (
             <label
               key={i}
