@@ -4,7 +4,9 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  test: {},
+  test: {
+    environment: "jsdom",
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),
@@ -14,6 +16,7 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "src/pages"),
       "@widgets": path.resolve(__dirname, "src/widgets"),
       "@shared": path.resolve(__dirname, "src/shared"),
+      "@tests": path.resolve(__dirname, "tests"),
     },
   },
 });

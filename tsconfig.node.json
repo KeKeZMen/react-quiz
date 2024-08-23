@@ -21,7 +21,9 @@
       "@widgets": ["src/widgets"],
       "@widgets/*": ["src/widgets/*"],
       "@shared": ["src/shared"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@tests": ["tests"],
+      "@tests/*": ["tests/*"]
     }
   },
   "include": ["vite.config.ts"]

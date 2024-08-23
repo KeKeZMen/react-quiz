@@ -37,8 +37,10 @@
       "@widgets": ["src/widgets"],
       "@widgets/*": ["src/widgets/*"],
       "@shared": ["src/shared"],
-      "@shared/*": ["src/shared/*"]
+      "@shared/*": ["src/shared/*"],
+      "@tests": ["tests"],
+      "@tests/*": ["tests/*"]
     }
   },
-  "include": ["src", "./global.d.ts"]
+  "include": ["src", "./tests/**/*"]
 }
