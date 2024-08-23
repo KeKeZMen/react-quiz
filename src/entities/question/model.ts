@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getQuestions, IQuestionWithId, IStoredQuestionWithId } from "./api";
 import { ErrorResponseType } from "@shared";
 
-type InitialStateType = {
+export type InitialStateType = {
   isLoading: boolean;
   isError: boolean;
   error: ErrorResponseType | null;
