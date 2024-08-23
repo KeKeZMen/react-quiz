@@ -77,7 +77,7 @@ export const Mainpage = () => {
 
   return (
     <main className="flex justify-center items-center h-[100dvh]">
-      <div className="flex flex-col bg-slate-500 rounded-md shadow-md w-[300px] p-3 gap-3">
+      <div className="flex flex-col md:bg-slate-500 rounded-md md:shadow-md w-full md:w-[400px] p-6 gap-6 md:border md:border-white">
         <h1 className="text-center uppercase py-3 text-3xl text-white">
           React Quiz
         </h1>
@@ -114,6 +114,7 @@ export const Mainpage = () => {
           onClick={handleGetQuestions}
           disabled={isLoading}
           variant="outline"
+          className="absolute bottom-0 w-full rounded-none left-0 text-2xl py-6 bg-slate-500 hover:bg-slate-400 border-0 text-white md:static md:border md:rounded-md hover:text-white"
         >
           {isLoading ? "Loading..." : "Get questions"}
         </Button>

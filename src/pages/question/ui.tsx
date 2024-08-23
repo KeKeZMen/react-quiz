@@ -11,5 +11,5 @@ export const Questionpage = () => {
   const { questions } = useAppSelector((state) => state.questions);
   const question = questions.find((question) => question.id === questionId);
 
-  return <div className="container py-3">{question && <Question question={question} />}</div>;
+  return <>{question && <Question question={question} />}</>;
 };

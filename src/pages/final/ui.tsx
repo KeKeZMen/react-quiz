@@ -134,7 +134,7 @@ export const Finalpage = () => {
         </div>
       </div>
 
-      <Button onClick={handleReset} className="bg-slate-500 uppercase text-2xl p-6">
+      <Button onClick={handleReset} className="bg-slate-500 uppercase text-2xl p-6 hover:bg-slate-400">
         Repeat test
       </Button>
     </div>

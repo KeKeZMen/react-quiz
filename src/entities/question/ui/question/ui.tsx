@@ -78,22 +78,22 @@ export const Question: FC<PropsType> = ({ question }) => {
 
   return (
     <div className="flex flex-col justify-between gap-3 items-center">
-      <p className="shadow-lg p-2 rounded-md bg-slate-700 text-white ">
+      <p className="p-3 rounded-md text-white text-3xl text-center">
         {question.question}
       </p>
 
       {question.type === "boolean" ? (
         <RadioGroup
-          className="flex justify-around md:justify-center items-center w-full"
+          className="grid grid-cols-2 justify-around md:justify-center items-center w-full"
         >
           {answers.map((answer, i) => (
             <label
               key={i}
               className={clsx(
-                "text-white shadow-lg p-2 rounded-md w-full md:w-[100px] cursor-pointer",
+                "text-white shadow-lg p-2 rounded-md w-full cursor-pointer text-center text-xl",
                 selectedAnswers.includes(answer)
-                  ? "bg-slate-400"
-                  : "bg-slate-600"
+                  ? "bg-slate-500"
+                  : "bg-slate-700"
               )}
             >
               <RadioGroupItem
@@ -106,15 +106,15 @@ export const Question: FC<PropsType> = ({ question }) => {
           ))}
         </RadioGroup>
       ) : (
-        <div className="flex flex-col gap-3 md:grid md:grid-cols-2 md:grid-rows-2 w-full">
+        <div className="flex flex-col gap-3 md:grid md:grid-cols-2 w-full">
           {answers.map((answer, i) => (
             <label
               key={`${answer}-${i}`}
               className={clsx(
-                "text-white shadow-lg p-2 rounded-md cursor-pointer",
+                "text-white shadow-lg p-2 rounded-md cursor-pointer text-center text-2xl hover:bg-slate-500 transition-all",
                 selectedAnswers.includes(answer)
-                  ? "bg-slate-400"
-                  : "bg-slate-600"
+                  ? "bg-slate-500"
+                  : "bg-slate-700"
               )}
             >
               <Checkbox
@@ -130,7 +130,7 @@ export const Question: FC<PropsType> = ({ question }) => {
         </div>
       )}
 
-      <Button onClick={handleAnswer}>Answer</Button>
+      <Button onClick={handleAnswer} className="w-full bg-slate-500 hover:bg-slate-400 text-2xl py-[30px] rounded-none absolute bottom-0 md:static md:rounded-md md:w-[200px]">Answer</Button>
     </div>
   );
 };
