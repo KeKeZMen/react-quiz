@@ -1,13 +1,18 @@
-import { questionsSlice } from "@entities/question";
+import { InitialStateType, questionsSlice } from "@entities/question";
 import { combineReducers, configureStore } from "@reduxjs/toolkit/react";
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   [questionsSlice.name]: questionsSlice.reducer,
 });
 
-export const makeStore = () =>
+export const makeStore = (
+  initialState?: Partial<{
+    questions: InitialStateType | undefined;
+  }>
+) =>
   configureStore({
     reducer: rootReducer,
+    preloadedState: initialState,
     middleware: (gDM) => gDM().concat(),
   });
 
