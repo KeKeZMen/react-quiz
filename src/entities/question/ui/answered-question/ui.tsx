@@ -9,13 +9,17 @@ type PropsType = {
 export const AnsweredQuestion: FC<PropsType> = ({ question }) => {
   return (
     <div
+      data-testid="answered-question"
       className={clsx(
         "flex justify-center h-[500px] rounded-md shadow-md w-[300px]",
         question.isAnswered ? "bg-green-600" : "bg-red-600"
       )}
     >
       <div className="text-white grid grid-rows-3">
-        <h2 className="text-center border-b border-white p-3">
+        <h2
+          className="text-center border-b border-white p-3"
+          data-testid="question"
+        >
           {question.question}
         </h2>
 
@@ -23,7 +27,9 @@ export const AnsweredQuestion: FC<PropsType> = ({ question }) => {
           <p className="mb-1">Your answers: </p>
           <div className="flex flex-col items-center">
             {question.selectedAnswers.map((answer, i) => (
-              <p key={i}>{answer}</p>
+              <p key={i} data-testid="selected-answers">
+                {answer}
+              </p>
             ))}
           </div>
         </div>
@@ -32,7 +38,9 @@ export const AnsweredQuestion: FC<PropsType> = ({ question }) => {
           <p className="mb-1">Correct answers: </p>
           <div className="flex flex-col items-center">
             {question.correct_answer.map((answer, i) => (
-              <p key={i}>{answer}</p>
+              <p key={i} data-testid="correct-answers">
+                {answer}
+              </p>
             ))}
           </div>
         </div>
