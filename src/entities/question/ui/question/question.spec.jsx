@@ -89,7 +89,7 @@ describe("Тестирование компонента Question", () => {
       "In the Monster Hunter Series, it is possible to capture Elder Dragons."
     );
 
-    expect(getAllByTestId("boolean-answer").length).toBe(2);
+    expect(getAllByTestId("answer").length).toBe(2);
 
     expect(getByTestId("answer-button")).toBeDefined();
   });
@@ -109,7 +109,7 @@ describe("Тестирование компонента Question", () => {
       "Which former US president used 'Let`s Make America Great Again' as his campaign slogan before Donald Trump`s campaign?"
     );
 
-    expect(getAllByTestId("multiple-answer").length).toBe(4);
+    expect(getAllByTestId("answer").length).toBe(4);
 
     expect(getByTestId("answer-button")).toBeDefined();
   });
