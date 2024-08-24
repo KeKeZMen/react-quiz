@@ -7,6 +7,12 @@ export default defineConfig({
   base: "/react-quiz/",
   test: {
     environment: "jsdom",
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*",
+      "./tests/e2e",
+    ],
   },
   resolve: {
     alias: {
