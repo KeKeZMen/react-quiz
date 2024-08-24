@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Mainpage } from "./mainpage";
-import { Questionpage } from "./question";
-import { Finalpage } from "./final";
+import { Mainpage } from "./main-page";
+import { Questionpage } from "./question-page";
+import { Finalpage } from "./final-page";
 import { Layout } from "@widgets";
 
 export const router = createBrowserRouter([
