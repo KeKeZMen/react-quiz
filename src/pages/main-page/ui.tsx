@@ -88,6 +88,7 @@ export const Mainpage = () => {
             type="number"
             value={easyQuestionsCount}
             onChange={handleEasyQuestionCount}
+            id="easy-count"
           />
         </label>
 
@@ -97,6 +98,7 @@ export const Mainpage = () => {
             type="number"
             value={mediumQuestionsCount}
             onChange={handleMediumQuestionCount}
+            id="medium-count"
           />
         </label>
 
@@ -106,6 +108,7 @@ export const Mainpage = () => {
             type="number"
             value={hardQuestionsCount}
             onChange={handleHardQuestionCount}
+            id="hard-count"
           />
         </label>
 
@@ -114,6 +117,7 @@ export const Mainpage = () => {
           onClick={handleGetQuestions}
           disabled={isLoading}
           variant="outline"
+          id="load-button"
           className="absolute bottom-0 w-full rounded-none left-0 text-2xl py-6 bg-slate-500 hover:bg-slate-400 border-0 text-white md:static md:border md:rounded-md hover:text-white"
         >
           {isLoading ? "Loading..." : "Get questions"}
