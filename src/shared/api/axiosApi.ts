@@ -1,4 +1,5 @@
-import axios from "axios";
+import { sleep } from "@shared/lib";
+import axios, { AxiosRequestConfig } from "axios";
 
 export type ErrorResponseType = {
   data: any;
@@ -17,3 +18,11 @@ baseAxios.interceptors.response.use(
     throw error.response as ErrorResponseType;
   }
 );
+
+export const axiosWithDelay = async <T>(
+  config: AxiosRequestConfig,
+  delayTime = 0
+) => {
+  await sleep(delayTime);
+  return baseAxios<T>(config);
+};
