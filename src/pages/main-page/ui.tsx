@@ -82,17 +82,16 @@ export const Mainpage = () => {
           React Quiz
         </h1>
 
-        <label>
+        <label data-testid="easy-count">
           <span className="text-white">Easy questions count</span>
           <Input
             type="number"
             value={easyQuestionsCount}
             onChange={handleEasyQuestionCount}
-            className="outline-none border-none"
           />
         </label>
 
-        <label>
+        <label data-testid="medium-count">
           <span className="text-white">Medium questions count</span>
           <Input
             type="number"
@@ -101,7 +100,7 @@ export const Mainpage = () => {
           />
         </label>
 
-        <label>
+        <label data-testid="hard-count">
           <span className="text-white">Hard questions count</span>
           <Input
             type="number"
@@ -111,6 +110,7 @@ export const Mainpage = () => {
         </label>
 
         <Button
+          data-testid="load-button"
           onClick={handleGetQuestions}
           disabled={isLoading}
           variant="outline"
