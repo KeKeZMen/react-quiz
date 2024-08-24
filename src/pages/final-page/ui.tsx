@@ -60,20 +60,24 @@ export const Finalpage = () => {
   return (
     <div className="flex flex-col py-3 items-center gap-3">
       <div
+        data-testid="answered-block"
         className={clsx(
           "text-2xl text-center",
           moreHalfAnswered ? "text-green-400" : "text-red-400"
         )}
       >
-      <h1 className="uppercase">{moreHalfAnswered ? "Congratulations" : "Try harder"}</h1>
+        <h1 className="uppercase" data-testid="answered-title">
+          {moreHalfAnswered ? "Congratulations" : "Try harder"}
+        </h1>
 
-      <h2>Your persentage of answered questions: {answeredPercentage}%</h2>
+        <h2>Your persentage of answered questions: {answeredPercentage}%</h2>
       </div>
 
       <div className="flex flex-col gap-3 items-center">
         <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:items-start">
           <div className="flex flex-col items-center gap-3">
             <div
+              data-testid="answered-easy"
               className={clsx(
                 "text-center rounded-md p-3 shadow-md text-white w-[100px]",
                 moreHalfEasyAnswered ? "bg-green-600" : "bg-red-600"
@@ -94,6 +98,7 @@ export const Finalpage = () => {
 
           <div className="flex flex-col items-center gap-3">
             <div
+              data-testid="answered-medium"
               className={clsx(
                 "text-center rounded-md p-3 shadow-md text-white w-[100px]",
                 moreHalfMediumAnswered ? "bg-green-600" : "bg-red-600"
@@ -114,6 +119,7 @@ export const Finalpage = () => {
 
           <div className="flex flex-col items-center gap-3">
             <div
+              data-testid="answered-hard"
               className={clsx(
                 "text-center rounded-md p-3 shadow-md text-white w-[100px]",
                 moreHalfHardAnswered ? "bg-green-600" : "bg-red-600"
@@ -134,7 +140,11 @@ export const Finalpage = () => {
         </div>
       </div>
 
-      <Button onClick={handleReset} className="bg-slate-500 uppercase text-2xl p-6 hover:bg-slate-400">
+      <Button
+        onClick={handleReset}
+        className="bg-slate-500 uppercase text-2xl p-6 hover:bg-slate-400"
+        data-testid="repeat"
+      >
         Repeat test
       </Button>
     </div>
