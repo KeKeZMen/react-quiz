@@ -90,6 +90,7 @@ export const Question: FC<PropsType> = ({ question }) => {
           {answers.map((answer, i) => (
             <label
               data-testid="boolean-answer"
+              id="answer"
               key={`${answer}-${i}`}
               className={clsx(
                 "text-white shadow-lg p-2 rounded-md w-full cursor-pointer text-center text-xl",
@@ -112,6 +113,7 @@ export const Question: FC<PropsType> = ({ question }) => {
           {answers.map((answer, i) => (
             <label
               data-testid="multiple-answer"
+              id="answer"
               key={`${answer}-${i}`}
               className={clsx(
                 "text-white shadow-lg p-2 rounded-md cursor-pointer text-center text-2xl hover:bg-slate-500 transition-all",
@@ -136,6 +138,7 @@ export const Question: FC<PropsType> = ({ question }) => {
       <Button
         onClick={handleAnswer}
         data-testid="answer-button"
+        id="answer-button"
         className="w-full bg-slate-500 hover:bg-slate-400 text-2xl py-[30px] rounded-none absolute bottom-0 md:static md:rounded-md md:w-[200px]"
       >
         Answer
