@@ -3,12 +3,9 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 import { Question } from "./ui";
 import UserEvent from "@testing-library/user-event";
 import { cleanup } from "@testing-library/react";
-import * as shared from "@shared";
-import { InitialStateType, IQuestionWithId } from "@entities/question";
-import * as router from "react-router-dom";
 
 vi.mock("@shared", async (importOriginal) => {
-  const actual = await importOriginal<typeof shared>();
+  const actual = await importOriginal();
   return {
     ...actual,
   };
@@ -16,7 +13,7 @@ vi.mock("@shared", async (importOriginal) => {
 
 const navigate = vi.fn();
 vi.mock("react-router-dom", async (importOriginal) => {
-  const actual = await importOriginal<typeof router>();
+  const actual = await importOriginal();
   return {
     ...actual,
     useNavigate: () => navigate,
@@ -26,7 +23,7 @@ vi.mock("react-router-dom", async (importOriginal) => {
 describe("Тестирование компонента Question", () => {
   afterEach(cleanup);
 
-  const mockMultipleQuestion: IQuestionWithId = {
+  const mockMultipleQuestion = {
     type: "multiple",
     difficulty: "medium",
     category: "Politics",
@@ -37,7 +34,7 @@ describe("Тестирование компонента Question", () => {
     id: "1",
   };
 
-  const mockBooleanQuestion: IQuestionWithId = {
+  const mockBooleanQuestion = {
     type: "boolean",
     difficulty: "easy",
     category: "Entertainment: Video Games",
@@ -48,7 +45,7 @@ describe("Тестирование компонента Question", () => {
     id: "1",
   };
 
-  const initialQuestionState: InitialStateType = {
+  const initialQuestionState = {
     answeredQuestions: [],
     error: null,
     isError: false,

@@ -2,12 +2,11 @@ import { cleanup } from "@testing-library/react";
 import { renderWithRedux } from "@tests";
 import { afterEach, describe, expect, test } from "vitest";
 import { AnsweredQuestion } from "./ui";
-import { IStoredQuestionWithId } from "@entities/question/api";
 
 describe("Тестирование компонента AnsweredQuestion", () => {
   afterEach(cleanup);
 
-  const mockAnsweredQuestion: IStoredQuestionWithId = {
+  const mockAnsweredQuestion = {
     type: "multiple",
     selectedAnswers: ["Ronald Reagan"],
     isAnswered: true,
@@ -20,7 +19,7 @@ describe("Тестирование компонента AnsweredQuestion", () =>
     id: "1",
   };
 
-  const mockUnansweredQuestion: IStoredQuestionWithId = {
+  const mockUnansweredQuestion = {
     type: "multiple",
     selectedAnswers: ["Richard Nixon"],
     isAnswered: false,
