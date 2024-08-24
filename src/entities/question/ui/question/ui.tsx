@@ -89,7 +89,7 @@ export const Question: FC<PropsType> = ({ question }) => {
         <RadioGroup className="grid grid-cols-2 justify-around md:justify-center items-center w-full">
           {answers.map((answer, i) => (
             <label
-              data-testid="boolean-answer"
+              data-testid="answer"
               id="answer"
               key={`${answer}-${i}`}
               className={clsx(
@@ -112,7 +112,7 @@ export const Question: FC<PropsType> = ({ question }) => {
         <div className="flex flex-col gap-3 md:grid md:grid-cols-2 w-full">
           {answers.map((answer, i) => (
             <label
-              data-testid="multiple-answer"
+              data-testid="answer"
               id="answer"
               key={`${answer}-${i}`}
               className={clsx(

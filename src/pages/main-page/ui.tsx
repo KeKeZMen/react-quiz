@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 export const Mainpage = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { toast, dismiss } = useToast();
+  const { toast } = useToast();
 
   const { isLoading, questions, isError, error } = useAppSelector(
     (state) => state.questions
@@ -57,6 +57,7 @@ export const Mainpage = () => {
           toast({
             title: "To many requests, try later",
             variant: "destructive",
+            duration: 2000,
           });
           break;
 
@@ -68,10 +69,7 @@ export const Mainpage = () => {
           break;
       }
 
-      setTimeout(() => {
-        dismiss();
-        dispatch(resetError());
-      }, 10000);
+      dispatch(resetError());
     }
   }, [questions, isError]);
 
@@ -88,7 +86,7 @@ export const Mainpage = () => {
             type="number"
             value={easyQuestionsCount}
             onChange={handleEasyQuestionCount}
-            id="easy-count"
+            data-testid="easy-count-input"
           />
         </label>
 
@@ -98,7 +96,7 @@ export const Mainpage = () => {
             type="number"
             value={mediumQuestionsCount}
             onChange={handleMediumQuestionCount}
-            id="medium-count"
+            data-testid="medium-count-input"
           />
         </label>
 
@@ -108,7 +106,7 @@ export const Mainpage = () => {
             type="number"
             value={hardQuestionsCount}
             onChange={handleHardQuestionCount}
-            id="hard-count"
+            data-testid="hard-count-input"
           />
         </label>
 
@@ -117,7 +115,6 @@ export const Mainpage = () => {
           onClick={handleGetQuestions}
           disabled={isLoading}
           variant="outline"
-          id="load-button"
           className="absolute bottom-0 w-full rounded-none left-0 text-2xl py-6 bg-slate-500 hover:bg-slate-400 border-0 text-white md:static md:border md:rounded-md hover:text-white"
         >
           {isLoading ? "Loading..." : "Get questions"}
