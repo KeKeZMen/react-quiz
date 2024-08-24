@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { baseAxios, decodeHtml, ErrorResponseType, sleep } from "@shared";
+import { axiosWithDelay, decodeHtml, ErrorResponseType } from "@shared";
 
 export interface IQuestion {
   type: "multiple" | "boolean";
@@ -40,45 +40,49 @@ export const getQuestions = createAsyncThunk(
     }: GetQuestionsType,
     thunkApi
   ) => {
-    const requests = [
-      sleep(0).then(() =>
-        baseAxios.get<IResponse>(
-          `/api.php?amount=${easyQuestionsCount}&difficulty=easy`
-        )
-      ),
-
-      sleep(5000).then(() =>
-        baseAxios.get<IResponse>(
-          `/api.php?amount=${mediumQuestionsCount}&difficulty=medium`
-        )
-      ),
-
-      sleep(10000).then(() =>
-        baseAxios.get<IResponse>(
-          `/api.php?amount=${hardQuestionsCount}&difficulty=hard`
-        )
-      ),
+    const urls = [
+      {
+        url: `/api.php?amount=${easyQuestionsCount}&difficulty=easy`,
+        delay: 0,
+      },
+      {
+        url: `/api.php?amount=${mediumQuestionsCount}&difficulty=medium`,
+        delay: 5000,
+      },
+      {
+        url: `/api.php?amount=${hardQuestionsCount}&difficulty=hard`,
+        delay: 5000,
+      },
     ];
 
-    try {
-      const responses = await Promise.all(requests);
-      return responses.flatMap((obj) =>
-        obj.data.results.map(
-          (question) =>
-            ({
-              ...question,
-              question: decodeHtml(question.question),
-              incorrect_answers: question.incorrect_answers.map(decodeHtml),
-              correct_answer: Array.isArray(question.correct_answer)
-                ? question.correct_answer.map(decodeHtml)
-                : [decodeHtml(question.correct_answer)],
-              id: String(Math.floor(Math.random() * 1000000)),
-            } as IQuestionWithId)
-        )
-      );
-    } catch (err) {
-      const { data, status } = err as ErrorResponseType;
-      return thunkApi.rejectWithValue({ data, status });
+    const data = [];
+
+    for (const { delay, url } of urls) {
+      try {
+        const res = await axiosWithDelay<IResponse>(
+          { url, method: "GET" },
+          delay
+        );
+        data.push(res);
+      } catch (err) {
+        const { data, status } = err as ErrorResponseType;
+        return thunkApi.rejectWithValue({ data, status });
+      }
     }
+
+    return data.flatMap((obj) =>
+      obj.data.results.map(
+        (question) =>
+          ({
+            ...question,
+            question: decodeHtml(question.question),
+            incorrect_answers: question.incorrect_answers.map(decodeHtml),
+            correct_answer: Array.isArray(question.correct_answer)
+              ? question.correct_answer.map(decodeHtml)
+              : [decodeHtml(question.correct_answer)],
+            id: String(Math.floor(Math.random() * 1000000)),
+          } as IQuestionWithId)
+      )
+    );
   }
 );
