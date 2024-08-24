@@ -24,7 +24,7 @@ vi.mock("react-router-dom", async (importOriginal) => {
 });
 
 describe("Тестирование компонента Question", () => {
-  afterEach(() => cleanup());
+  afterEach(cleanup);
 
   const mockMultipleQuestion: IQuestionWithId = {
     type: "multiple",
